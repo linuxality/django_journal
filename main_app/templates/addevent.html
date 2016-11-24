@@ -3,24 +3,89 @@
 
 {% block content %}
 
-{% if user.is_authenticated %}
+
 <div class="jumbotron">
   <div class="container">
+    {% if user.is_authenticated %}
+  </br>
     <h2>Add a new entry</h2>
-    <form enctype="multipart/form-data" action="submitevent/" method="post">
-      {% csrf_token %}
-      {{ form.as_p }}
-      <input type="submit" value="Submit" />
-    </form>
+      <form enctype="multipart/form-data" action="submitevent/" method="post">
+        {% csrf_token %}
+        {{ form.non_field_errors }}
+        <table class="table">
+          <tr>
+            <div class="fieldWrapper">
+              {{ form.title.errors }}
+                <th>
+                  <label for="{{ form.title.id_for_label }}">Title:</label>
+                </th>
+                <th>
+                  {{ form.title }}
+                </th>
+            </div>
+          </tr>
+          <tr>
+            <div class="fieldWrapper">
+              {{ form.description.errors }}
+                <th>
+                  <label for="{{ form.description.id_for_label }}">Description:</label>
+                </th>
+                <th>
+                  {{ form.description }}
+                </th>
+              </div>
+            </tr>
+            <tr>
+             <div class="fieldWrapper">
+               {{ form.eventdate.errors }}
+                 <th>
+                   <label for="{{ form.eventdate.id_for_label }}">Date:</label>
+                 </th>
+                 <th>
+                   {{ form.eventdate }}
+                 </th>
+             </div>
+            </tr>
+            <tr>
+             <div class="fieldWrapper">
+               {{ form.rating.errors }}
+                 <th>
+                   <label for="{{ form.rating.id_for_label }}">Rating:</label>
+                 </th>
+                 <th>
+                   {{ form.rating }}
+                 </th>
+             </div>
+            </tr>
+            <tr>
+             <div class="fieldWrapper">
+               {{ form.image.errors }}
+                 <th>
+                   <label for="{{ form.image.id_for_label }}">Image:</label>
+                 </th>
+                 <th>
+                   {{ form.image }}
+                 </th>
+             </div>
+            </tr>
+            <tr>
+              <th>
+                <input class="btn btn-success" type="submit" value="Submit" />
+              </th>
+              <th>
+              </th>
+            </tr>
+        </table>
+        </form>
   </div>
-</div>
+
 {% else %}
-<div class="jumbotron">
-  <div class="container">
+  </br>
     <h2>Add a new entry</h2>
     <p>Sorry you need to be logged in.</p>
-  </div>
-</div>
+
 {% endif %}
+</div>
+<div class="container">
 
 {% endblock %}

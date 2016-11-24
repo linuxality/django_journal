@@ -28,11 +28,13 @@
         <div id="navbar" class="navbar-collapse collapse">
 
           {% if user.is_authenticated %}
+            </br>
             <a class="navbar-text navbar-right" href="{% url 'user_profile' user.username %}">{{ user.username }}</a>
             <a class="navbar-text navbar-right" href="{% url 'Logout' %}">Logout</a>
             <a class="navbar-text navbar-right" href="{% url 'addevent' %}">Add Event</a>
           {% else %}
-            <a class="navbar-text navbar-right" href="{% url 'Login' %}">Login</a>
+            </br>
+            <a class="navbar-right btn btn-success" href="{% url 'Login' %}">Login</a>
           {% endif %}
 
         </div><!--/.navbar-collapse -->
