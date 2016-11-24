@@ -1,0 +1,34 @@
+{% extends 'header.html' %}
+{% load staticfiles %}
+
+{% block content %}
+
+<div class="jumbotron">
+  <div class="container">
+    <h2>{{ username }}</h2>
+    <p>Profile page for {{ username }}</p>
+    <hr>
+  </div>
+</div>
+
+<div class="container">
+
+ <div class="row">
+
+  {% for entry in entry %}
+
+   <div class="col-md-4">
+     <h2>{{ entry.title }}</h2>
+     <p>{{ entry.description }}</p>
+     <p><a class="btn btn-default" href="/{{ entry.id }}/" role="button">View details &raquo;</a></p>
+   </div>
+
+     {% if forloop.counter|divisibleby:3 %}
+       </div><div class ="row">
+     {% endif %}
+
+   {% endfor %}
+
+</div>
+
+{% endblock %}

@@ -1,0 +1,26 @@
+{% extends 'header.html' %}
+{% load staticfiles %}
+
+{% block content %}
+
+{% if user.is_authenticated %}
+<div class="jumbotron">
+  <div class="container">
+    <h2>Add a new entry</h2>
+    <form enctype="multipart/form-data" action="submitevent/" method="post">
+      {% csrf_token %}
+      {{ form.as_p }}
+      <input type="submit" value="Submit" />
+    </form>
+  </div>
+</div>
+{% else %}
+<div class="jumbotron">
+  <div class="container">
+    <h2>Add a new entry</h2>
+    <p>Sorry you need to be logged in.</p>
+  </div>
+</div>
+{% endif %}
+
+{% endblock %}

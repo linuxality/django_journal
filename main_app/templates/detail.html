@@ -1,0 +1,17 @@
+{% extends 'header.html' %}
+{% load staticfiles %}
+
+{% block content %}
+
+<div class="jumbotron">
+  <div class="container">
+    <h2>{{ entry.title }}</h2>
+    <p>Entered by: {{ entry.user }}</p>
+    <p>Description: {{ entry.description }}</p>
+    <p>Date: {{ entry.eventdate }}</p>
+    <p>Rating: {{ entry.rating }}</p>
+    <img src="{{ entry.image.url }}">
+  </div>
+</div>
+
+{% endblock %}

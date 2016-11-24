@@ -1,0 +1,38 @@
+{% extends 'header.html' %}
+{% load staticfiles %}
+
+{% block content %}
+
+<div class="jumbotron">
+  <div class="container">
+    <h2>Welcome</h2>
+    <p>This is a Django powered project for keeping maintaining a Journal of events.</p>
+    <hr>
+  </div>
+</div>
+
+<div class="container">
+
+ <div class="row">
+
+  {% for entry in entry %}
+
+   <div class="col-md-4">
+     <h2>{{ entry.title }}</h2>
+     <p>{{ entry.description }}</p>
+     <!-- Optional -->
+     <a href="/user/{{entry.user.username}}/">
+       by: {{ entry.user.username }}
+     </a>
+     <p><a class="btn btn-default" href="/{{ entry.id }}/" role="button">View details &raquo;</a></p>
+   </div>
+
+     {% if forloop.counter|divisibleby:3 %}
+       </div><div class ="row">
+     {% endif %}
+
+   {% endfor %}
+
+</div>
+
+{% endblock %}
